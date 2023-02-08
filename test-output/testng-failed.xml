@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" parallel="none">
+  <parameter name="password" value="123456"/>
+  <parameter name="domain" value="gmail"/>
+  <parameter name="username" value="mrrahman84"/>
+  <listeners>
+    <listener class-name="Academy.Listener"/>
+  </listeners>
+  <test name="Test(failed)" parallel="none">
+    <parameter name="password" value="123456"/>
+    <parameter name="domain" value="gmail"/>
+    <parameter name="username" value="mrrahman84"/>
+    <classes>
+      <class name="Academy.BaseElement">
+        <methods>
+          <include name="setDriver"/>
+          <include name="InvalidPassword" invocation-numbers="0"/>
+          <include name="InitializedDriver"/>
+          <include name="teardown"/>
+        </methods>
+      </class> <!-- Academy.BaseElement -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
