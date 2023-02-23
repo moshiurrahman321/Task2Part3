@@ -30,57 +30,55 @@ import com.beust.jcommander.Parameter;
 import pageObjects.CardPage;
 import pageObjects.GamePage;
 import pageObjects.MainPage;
+import pageObjects.SelectPage;
 import resources.BaseForm;
 
 
 public class BaseElement extends BaseForm{	
-	private static final String password = null;
-	static String baseurl="https://userinyerface.com/";	
-	@BeforeTest
-	public void InitializedDriver() {
-		driver.get(baseurl);
-	}
+	
+
 	
 	
-	@Test(priority=1)
+	@Test
 	public void Helpform() throws InterruptedException {
-		driver.get(baseurl);
+		InitializeDriver();
 		driver.manage().window().maximize();
 	    Assert.assertTrue(true, "Main page is open");
-	    MainPage mp=new MainPage(driver);
-	    mp.Here().click();
-	    Thread.sleep(3000);
-	    Assert.assertEquals(driver.getTitle(),"User Inyerface - A worst-practice UI experiment");
+	    SelectPage sp=new SelectPage(driver);
+	    sp.Here().click();
+	   
 	    GamePage gp=new GamePage(driver);
         gp.Help().click();
-		Thread.sleep(3000);
+		
 		
 		
 	}
 	
-	@Test(priority=2)
+	@Test
 	public void Timer() throws InterruptedException {
 	
-		driver.get(baseurl);
+		InitializeDriver();
 		driver.manage().window().maximize();
-		MainPage mp=new MainPage(driver);
-		 mp.Here().click();
-	     Thread.sleep(3000);
+		SelectPage sp=new SelectPage(driver);
+		 sp.Here().click();
+	     
 	     
 	     
 	}
-	@Test(priority=3)
+	@Test
 	public void ValidPassword() throws InterruptedException {
-		driver.get(baseurl);
+		InitializeDriver();
+		SelectPage sp=new SelectPage(driver);
+		sp.Here().click();
 		MainPage mp=new MainPage(driver);
-		 mp.Here().click();
+		 
 		 mp.Password().clear();
 	     mp.Password().sendKeys("M03150421096mА̀ ");
 	     mp.Mail().clear();
 	     mp.Mail().sendKeys("mrrahman84");
 	     mp.Domain().clear();
 	     mp.Domain().sendKeys("gmail");
-	     Thread.sleep(3000);
+	     
 	     mp.clickother().click();
 	    
 	     Thread.sleep(3000);
@@ -92,39 +90,33 @@ public class BaseElement extends BaseForm{
 		
 	}
 	@Parameters({"password"})
-	@Test(priority=4)
+	@Test
 	public void InvalidPassword(String password) throws InterruptedException {
-		 driver.get(baseurl);
+		InitializeDriver();
+		SelectPage sp=new SelectPage(driver);
+		sp.Here().click();
 		 MainPage mp=new MainPage(driver);
-		 mp.Here().click();
+		 
 		 mp.Password().clear();
 	     mp.Password().sendKeys(password);
 	     System.out.print(""+password);
-	     Thread.sleep(5000);
+	     
 	     mp.Mail().clear();
 	     mp.Mail().sendKeys("mrrahman84");
 	     
 	     mp.Domain().clear();
 	     mp.Domain().sendKeys("gmail");
-	     Thread.sleep(3000);
+	    
 	     mp.clickother().click();
 	    
-	     Thread.sleep(3000);
+	     
 	     mp.selectother().click();
 	        
 	     mp.Checkbox().click();
 	     mp.Next().click();
 	     CardPage cp=new CardPage(driver);
 	     Assert.assertEquals(cp.card().getText(),"This is me");
-	     Thread.sleep(3000);
+	     
 	}
-	
-	
-	@AfterTest
-	 public void teardown() {
-	 	driver.close();
-	 	//driver=null;
-	 }
-	
-	
+		
 }

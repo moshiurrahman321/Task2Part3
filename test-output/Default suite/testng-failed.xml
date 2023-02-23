@@ -7,8 +7,7 @@
         <methods>
           <include name="setDriver"/>
           <include name="InvalidPassword"/>
-          <include name="InitializedDriver"/>
-          <include name="teardown"/>
+          <include name="close"/>
         </methods>
       </class> <!-- Academy.BaseElement -->
     </classes>

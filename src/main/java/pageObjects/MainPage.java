@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class MainPage {
 	public WebDriver driver;
-	By selectHere=By.xpath("//a[contains(text(),'HERE')]");
+	
 	By writePassword=By.cssSelector("input[placeholder ='Choose Password']");
 	By writeMail=By.cssSelector("input[placeholder ='Your email']");
 	By writeDomain=By.cssSelector("input[placeholder ='Domain']"); 
@@ -23,9 +23,7 @@ public class MainPage {
 	public MainPage(WebDriver driver) {
 		this.driver=driver;
 	}
-	public WebElement Here() {
-		return driver.findElement(selectHere);
-	}
+	
 	
 	public WebElement Password() {
 		return driver.findElement(writePassword);

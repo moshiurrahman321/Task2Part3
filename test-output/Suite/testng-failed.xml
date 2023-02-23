@@ -16,6 +16,7 @@
         <methods>
           <include name="setDriver"/>
           <include name="InvalidPassword" invocation-numbers="0"/>
+          <include name="ValidPassword"/>
           <include name="InitializedDriver"/>
           <include name="teardown"/>
         </methods>

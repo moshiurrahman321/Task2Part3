@@ -23,10 +23,13 @@ public class BaseForm {
 		WebDriverManager.chromedriver().setup();
 		driver=new ChromeDriver();
 	}
-	/*@AfterSuite
+	 public void InitializeDriver() {
+		driver.get("https://userinyerface.com/");
+	}
+	@AfterSuite
 	public static void close() {
 		driver.close();
-	}*/
+	}
 	/*@Test
 	public String getScreenShotPath(String testCaseName,WebDriver driver) throws IOException
 	{
